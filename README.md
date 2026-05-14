@@ -285,7 +285,7 @@ The command line identified was:
 <a id="conclusion-investigation-timeline--key-findings"></a>
 # 📊 Conclusion, Investigation Timeline & Key Findings
 
-At Acme Corp, the Phantom Hackers targeted Bubba Rockerfeatherman III’s privileged IT admin account to steal sensitive data. Using Microsoft Defender for Endpoint telemetry and KQL queries, I uncovered a multi-stage attack on the device `anthony-001`. The initial stage of the compromise began when `BitSentinelCore.exe` was written to disk at `2025-05-07T02:00:36.794406Z`, with the active phase starting upon execution by user `Bubba` at `2025-05-07T02:02:14.6264638Z`.
+
 
 
 
