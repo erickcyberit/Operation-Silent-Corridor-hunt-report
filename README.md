@@ -118,7 +118,7 @@
 
 **Hint:**
 1. 
-<img src="https://i.imgur.com/PjcYPQp.png">
+<img src="">
 
 **KQL Query Used:**
 
@@ -146,7 +146,7 @@
 **Hints:**
 1. 
 
-<img src="https://i.imgur.com/Uc51ZeL.png">
+<img src="">
 
 **KQL Query Used:**
 
@@ -181,7 +181,7 @@
 **Hint:**
 1. 
 
-<img src="https://i.imgur.com/Ak3Vh7d.png">
+<img src="">
 
 **KQL Query Used:**
 
