@@ -4,14 +4,14 @@
 
 - [🌍 Scenario](#scenario)
 - [🎯 Mission](#mission)
-- [🚩 Flag 1: ](#flag-1-identify-the-fake-antivirus-program-name)
-- [🚩 Flag 2: ](#flag-2-malicious-file-written-somewhere)
-- [🚩 Flag 3: ](#flag-3-execution-of-the-program)
-- [🚩 Flag 4 - ](#flag-4---keylogger-artifact-written)
-- [🚩 Flag 5 - ](#flag-5---registry-persistence-entry)
-- [🚩 Flag 6 - ](#flag-6---daily-scheduled-task-created)
-- [🚩 Flag 7 - ](#flag-7---process-spawn-chain)
-- [🚩 Flag 8 - ](#flag-8---timestamp-correlation)
+- [🚩 Flag 1: ](#flag-1)
+- [🚩 Flag 2: ](#flag-2)
+- [🚩 Flag 3: ](#flag-3)
+- [🚩 Flag 4 - ](#flag-4)
+- [🚩 Flag 5 - ](#flag-5)
+- [🚩 Flag 6 - ](#flag-6)
+- [🚩 Flag 7 - ](#flag-7)
+- [🚩 Flag 8 - ](#flag-8)
 - [📊 Conclusion, Investigation Timeline & Key Findings](#conclusion-investigation-timeline--key-findings)
 - [🛡️ MITRE ATT&CK Mapping](#mitre-attck-mapping)
 - [🛠️ Remediation](#remediation)
@@ -27,13 +27,24 @@
 
 <a id="mission"></a>
 ## 🎯 Mission
+"The BfV advisory landed this morning. GREY VEIL has been hitting defence contractors across Europe. Extended dwell times. Previous victims didn't know they were compromised until the intelligence services told them."
+
+"Hofmann wants us to prove we're clean. Or prove we're not. Either way, I need evidence. Start with remote access. That's the entry point in every previous GREY VEIL case. If they're inside, find them. If they're not, prove it. Don't assume either way."
 
 
 
 **Known Information:**
-💻 DeviceName: 
+💻 GREY VEIL // Known Tradecraft
+Assessed to operate on behalf of a foreign intelligence service. Previous intrusions against defence, aerospace, and critical infrastructure sectors. The following tradecraft has been observed in prior campaigns:
 
-<a id="flag-1-identify-the-fake-antivirus-program-name"></a>
+Extended dwell times measured in weeks, not days
+Targeting of remote access infrastructure for initial entry
+Preference for techniques that blend with normal administrative activity
+Multi-host operations across engineering and infrastructure segments
+Interest in intellectual property related to defence programmes
+GREY VEIL does not deploy custom tooling. Previous victims reported no malware detections, no endpoint alerts, and no signatures fired during the entire intrusion lifecycle. Traditional detection failed.
+
+<a id="flag-1"></a>
 # 🚩 Flag 1: 
 
 **Objective:**
@@ -77,7 +88,7 @@
 
 ---
 
-<a id="flag-2-malicious-file-written-somewhere"></a>
+<a id="flag-2"></a>
 # 🚩 Flag 2:
 
 **Objective:**
@@ -107,7 +118,7 @@
 
 ---
 
-<a id="flag-3-execution-of-the-program"></a>
+<a id="flag-3"></a>
 # 🚩 Flag 3: 
 
 **Objective:**
@@ -136,7 +147,7 @@
 
 ---
 
-<a id="flag-4---keylogger-artifact-written"></a>
+<a id="flag-4"></a>
 # 🚩 Flag 
 
 **Objective:**
@@ -171,7 +182,7 @@
 
 ---
 
-<a id="flag-5---registry-persistence-entry"></a>
+<a id="flag-5"></a>
 # 🚩 Flag 5 – Registry Persistence Entry
 
 **Objective:**
@@ -198,7 +209,7 @@
 ### ✅ Flag 5 Answer: 
 ---
 
-<a id="flag-6---daily-scheduled-task-created"></a>
+<a id="flag-6"></a>
 # 🚩 Flag 6 -
 
 **Objective:**
@@ -228,7 +239,7 @@
 
 ---
 
-<a id="flag-7---process-spawn-chain"></a>
+<a id="flag-7"></a>
 # 🚩 Flag 7 – Process Spawn Chain
 
 **Objective:**
@@ -263,7 +274,7 @@ The command line identified was:
 ### ✅ Flag 7 
 ---
 
-<a id="flag-8---timestamp-correlation"></a>
+<a id="flag-8"></a>
 # 🚩 Flag 8 – 
 
 **Objective:**
