@@ -314,10 +314,6 @@ The attackers used the command net group "Domain Admins" /dom and net group "Ent
 
 ---
 
-<a id="conclusion-investigation-timeline--key-findings"></a>
-# 📊 Conclusion, Investigation Timeline & Key Findings
-
-
 
 ---
 
