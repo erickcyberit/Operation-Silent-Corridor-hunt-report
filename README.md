@@ -1,4 +1,4 @@
-# 🕵️ The Cyber Range - The Great Admin Heist CTF
+# 🕵️ 
 
 ## 🌟 Table of Contents 🌟
 
