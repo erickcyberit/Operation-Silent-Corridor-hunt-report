@@ -13,7 +13,7 @@
 - [🚩 Flag 7 ](#flag-7)
 - [🚩 Flag 8 ](#flag-8)
 - [🚩 Flag 9 ](#flag-9)
-- [📊 Conclusion, Investigation Timeline & Key Findings](#conclusion-investigation-timeline--key-findings)
+- [📊 Conclusion](#conclusion-investigation-timeline--key-findings)
 - [🛡️ MITRE ATT&CK Mapping](#mitre-attck-mapping)
 - [🛠️ Remediation](#remediation)
 
@@ -360,35 +360,123 @@ This shows that SRV-DC01 and SRV-FILES02 were being attempted access to in the c
 ✅ Flag 9 Answer: SRV-DC01, SRV-FILES02
 
 ---
+<a id ="Conclusion"></a>
+# Conclusion
 
 
 
-[![Timeline]()
-## Key Findings
 
-| Flag | Objective | Key Findings | Flag Answer |
-|------|-----------|--------------|-------------|
-| **1** | 
-| **2** | 
-| **3** |  |
-| **4** |
-| **5** |
-| **6** | |
-| **7** | 
-| **8** | 
 
 <a id="mitre-attck-mapping"></a>
 # 🛡️ MITRE ATT&CK Mapping
 
-| ID | MITRE Tactic | MITRE Technique | Description |
-|----|--------------|-----------------|-------------|
-| 1  | 
-| 2  | 
-| 3  | 
-| 4  |
-| 5  | 
-| 6  | 
-| 7  | 
+VPN access via compromised credentials (T1133, T1078)
+Use of TOR infrastructure for operational security (T1090)
+Landing on engineering workstation WS-ENG04 (T1021)
+Host reconnaissance using systeminfo.exe (T1082)
+Active Directory privilege enumeration (T1069.002)
+Internal network/server reconnaissance (T1018, T1046)
 
 <a id="remediation"></a>
 # 🛠️ Remediation
+
+1. Disable and Reset the Compromised Account
+Disable or reset the HALDRIC\s.brandt account immediately
+- Force password rotation
+- Revoke all active VPN and authentication sessions
+- Invalidate cached tokens and Kerberos tickets
+- Review recent MFA enrollment or authentication changes
+
+
+2. Isolate the Compromised Host
+- Remove WS-ENG04 from the network
+- Preserve forensic evidence before rebuilding or reimaging
+- Capture memory and disk artifacts if possible
+- Review the host for persistence mechanisms or unauthorized access
+
+
+3. Block Malicious Infrastructure
+
+Block the identified external IP addresses at perimeter devices and VPN gateways:
+
+- 185.220.101.34
+- 45.153.160.88
+- 88.153.72.14
+- 91.234.33.126
+
+Additional actions:
+
+- Block TOR exit-node traffic where operationally feasible
+- Review firewall and VPN logs for additional related infrastructure
+
+
+4. Strengthen Remote Access Security
+- Enforce MFA on all VPN and remote access services
+- Require phishing-resistant MFA where possible
+- Disable legacy authentication protocols
+- Restrict VPN access to approved geographic regions if applicable
+
+
+5. Audit Privileged Access
+Review membership of:
+- Domain Admins
+- Enterprise Admins
+- Remove unnecessary privileged accounts
+- Implement least-privilege access controls
+- Consider Just-In-Time (JIT) or Privileged Access Management (PAM)
+
+
+6. Hunt for Additional Compromised Accounts
+
+Review authentication activity for:
+
+- Failed-to-successful login patterns
+- TOR or anonymized infrastructure usage
+- Multiple source IPs for a single account
+- Unusual login times or geolocations
+- Additional VPN accounts exhibiting similar behavior
+
+
+7. Improve Detection Capabilities
+
+Create detections and alerts for:
+
+- systeminfo.exe
+- net group
+- whoami
+- nltest
+- net user
+- ipconfig
+- PowerShell enumeration activity
+- Suspicious command-line execution from VPN-connected hosts
+
+8. Enhance VPN Monitoring
+
+Deploy monitoring for:
+
+- VPN logins from TOR infrastructure
+- Multiple IP addresses associated with one account
+- Elevated token logins from unusual locations
+- Repeated failed authentication attempts followed by success
+
+9. Increase Logging and Retention
+- Enable advanced Defender telemetry
+- Enable process command-line logging
+- Centralize VPN, endpoint, and identity logs into Microsoft Sentinel
+- Increase retention periods to support long dwell-time investigations
+
+10. Harden Internal Infrastructure
+- Segment engineering workstations from critical servers
+- Restrict workstation-to-server communication
+- Audit SMB, RDP, and WinRM access
+- Disable unused remote management protocols
+Limit administrative share access
+
+11. Conduct a Wider Compromise Assessment
+Because the activity aligns with stealth-focused espionage tradecraft:
+
+- Review historical authentication activity
+- Investigate potential lateral movement
+- Search for evidence of data staging or exfiltration
+- Validate integrity of sensitive aerospace project repositories
+= Perform enterprise-wide threat hunting for related activity
