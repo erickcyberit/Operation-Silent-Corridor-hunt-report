@@ -12,6 +12,7 @@
 - [🚩 Flag 6 - ](#flag-6)
 - [🚩 Flag 7 - ](#flag-7)
 - [🚩 Flag 8 - ](#flag-8)
+- [🚩 Flag 9 - ](#flag-9)
 - [📊 Conclusion, Investigation Timeline & Key Findings](#conclusion-investigation-timeline--key-findings)
 - [🛡️ MITRE ATT&CK Mapping](#mitre-attck-mapping)
 - [🛠️ Remediation](#remediation)
@@ -42,7 +43,7 @@ Interest in intellectual property related to defence programmes
 GREY VEIL does not deploy custom tooling. Previous victims reported no malware detections, no endpoint alerts, and no signatures fired during the entire intrusion lifecycle. Traditional detection failed.
 
 <a id="flag-1"></a>
-# 🚩 Flag 1: 
+# 🚩 Flag 1: Environment Access
 
 **Objective:**
 Confirm access. What is the Sentinel custom log table name?
@@ -67,32 +68,35 @@ Look for the main table name
 ---
 
 <a id="flag-2"></a>
-# 🚩 Flag 2:
+# 🚩 Flag 2: Suspicious Account
 
 **Objective:**
-
+HUNT LEAD: "The advisory says previous victims were compromised through remote access infrastructure. Profile every account. Find the one that doesn't fit."
 
 **What to Hunt:**
-
+Look at every profile and see which one is suspicious.
 
 **Hints:**
-1. 
-
-<img src="">
+1. Start with remote access logs. Profile every user. One doesn't fit.
 
 **KQL Query Used:**
 
 ```
+SilentCorridorX_CL
+| where isnotempty(EventTime)
+| where TimeGenerated > datetime(2026-04-07T14:00:00Z)
+| where todatetime(EventTime) between (
+    datetime(2026-02-20T00:00:00Z) ..
+    datetime(2026-03-05T23:59:59Z)
+)
+| where AccountDomain == "HALDRIC"
+| where ActionType == "LogonSuccess"
 
 ```
+<img width="486" height="430" alt="image" src="https://github.com/user-attachments/assets/d50f6854-df40-4c77-b1f7-5f17d01614e0" />
+This log shows that a remote IP was used to login successfully with an elevated token from s.brandt.
 
 
-
----
-
-### 📑 Task: Provide the name of the program in question.
-
-### ✅ Flag 2 
 
 ---
 
@@ -218,7 +222,7 @@ Look for the main table name
 ---
 
 <a id="flag-7"></a>
-# 🚩 Flag 7 – Process Spawn Chain
+# 🚩 Flag 7 – 
 
 **Objective:**
 
@@ -260,7 +264,11 @@ The command line identified was:
 **What to Hunt:**
 
 
-**Thought:**
+**KQL Query Used:**
+
+```
+
+```
 
 
 ---
@@ -276,7 +284,31 @@ The command line identified was:
 
 
 
+---
 
+<a id="flag-9"></a>
+# 🚩 Flag 9 -
+
+**Objective:**
+
+
+**What to Hunt:**
+
+
+**Hints:**
+
+
+<img src="">
+
+**KQL Query Used:**
+
+```
+
+```
+
+
+
+---
 
 
 
