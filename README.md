@@ -115,7 +115,7 @@ Find account logins and see if any Remote IP looks suspicious
 
 **KQL Query Used:**
 
-
+```
 SilentCorridorX_CL
 | where isnotempty(EventTime)
 | where TimeGenerated > datetime(2026-04-07T14:00:00Z)
@@ -127,12 +127,9 @@ SilentCorridorX_CL
 
 ### ✅ Flag 3 Answer: s.brandt 185.220.101.34
 
+```
 
 ---
-
-
-
-
 
 <a id="flag-4"></a>
 # 🚩 Flag 
