@@ -396,7 +396,6 @@ Disable or reset the HALDRIC\s.brandt account immediately
 
 
 3. Block Malicious Infrastructure
-
 Block the identified external IP addresses at perimeter devices and VPN gateways:
 
 - 185.220.101.34
