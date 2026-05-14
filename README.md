@@ -195,22 +195,23 @@ SilentCorridorX_CL
 
 ```
 
-### ✅ Flag 5 Answer: 45.153.160.88,88.153.72.14,91.234.33.126,185.220.101.34 	
+✅ Flag 5 Answer: 45.153.160.88,88.153.72.14,91.234.33.126,185.220.101.34 	
 These are the 4 IP addresses in s.brandt 
 
 ---
 
 <a id="flag-6"></a>
 
-# 🚩 Flag 6 -
+# 🚩 Flag 6 - Internal Landing Point
 
 **Objective:**
-
+HUNT LEAD: "Threat intel confirms three of those are anonymisation infrastructure. The fourth is residential.
 
 **What to Hunt:**
 
 
 **Hints:**
+1. VPN sessions connect to an internal destination. Check where the attacker's sessions terminated.
 
 
 <img src="">
@@ -218,16 +219,22 @@ These are the 4 IP addresses in s.brandt
 **KQL Query Used:**
 
 ```
+SilentCorridorX_CL
+| where isnotempty(EventTime)
+| where TimeGenerated > datetime(2026-04-07T14:00:00Z)
+| where MdeTable == "FortiGateVPN"
+| where AccountName == "s.brandt"
+| distinct EventTime, AccountName, RemoteIP, TunnelIP, ActionType, DestinationHost
+| order by EventTime asc
 
 ```
+<img width="1308" height="149" alt="image" src="https://github.com/user-attachments/assets/8e005b99-054b-435b-9577-fe20a0ae6d18" />
 
 
 
----
+✅ Flag 6 Answer: WS-ENG04
 
-### 📑 Task: 
-
-### ✅ Flag 6 Answer: UpdateHealthTelemetry
+The destination host for failed and successful attempts was WS-ENG04 based on the suspicious IP being 185.220.101.34
 
 ---
 
