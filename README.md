@@ -18,8 +18,6 @@
 
 ---
 
-## 👉 [Explore the interactive timeline of key CTF findings here.]()
-
 <a id="scenario"></a>
 ## 🌍 Scenario
 "The BfV advisory landed this morning. GREY VEIL has been hitting defence contractors across Europe. Extended dwell times. Previous victims didn't know they were compromised until the intelligence services told them."
