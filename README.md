@@ -45,43 +45,24 @@ GREY VEIL does not deploy custom tooling. Previous victims reported no malware d
 # 🚩 Flag 1: 
 
 **Objective:**
-
+Confirm access. What is the Sentinel custom log table name?
 
 **What to Hunt:**
+Look for the main table name
 
 
 **Hints:**
-1. 
+1. The table name is in the briefing page and data dictionary.
 
-<img src="">
+<img width="957" height="445" alt="image" src="https://github.com/user-attachments/assets/adcc5a2f-4f19-4617-bd31-fecf3fb33408" />
 
-<img src="">
 
 **KQL Query Used:**
 
 ```
+| where isnotempty(EventTime) | where TimeGenerated > datetime(2026-04-07T14:00:00Z) | summarize count() by MdeTable
 
 ```
-
-
-## Earliest File Appearance — 
-
-
-<img src="">
-
-**KQL Query Used:**
-
-```
-
-```
-
-
-
----
-
-### 📑 Task: 
-
-### ✅ Flag 
 
 ---
 
