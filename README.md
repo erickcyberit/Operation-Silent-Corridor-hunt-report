@@ -239,60 +239,78 @@ The destination host for failed and successful attempts was WS-ENG04 based on th
 ---
 
 <a id="flag-7"></a>
-# 🚩 Flag 7 – 
+# 🚩 Flag 7 – Initial Process
 
 **Objective:**
+HUNT LEAD: "Pivot to the beachhead. What's the first non-routine process under their session, and what spawned it?"
 
 **What to Hunt:**
+Finding the first command used in DeviceProcessEvents.
 
 
 **Hint:** 
+1. Process events show both the file and the parent that spawned it. Filter for the compromised account on the beachhead, sort by time.
 
-
-<img src="">
 
 **KQL Query Used:**
 
 ```
+SilentCorridorX_CL
+| where isnotempty(EventTime)
+| where TimeGenerated > datetime(2026-04-07T14:00:00Z)
+| where todatetime(EventTime) between (
+    datetime(2026-02-15T00:00:00Z) ..
+    datetime(2026-02-27T23:59:59Z)
+)
+| where MdeTable == "DeviceProcessEvents"
+| where AccountName == "s.brandt"
+| project AccountName, ProcessCommandLine, EventTime, InitiatingProcessFileName
 
 ```
+<img width="1044" height="58" alt="image" src="https://github.com/user-attachments/assets/a2d8f328-32e2-4b31-9d92-bb3ccc63e9ec" />
 
-To trace the complete process chain behind the scheduled task creation, I analysed process events on the `anthony-001` device, starting from `2025-05-07T02:00:36.794406Z`. 
+The first command used on the account was systeminfo and the parent file is cmd.exe on the earliest EventTime.
 
-The command line identified was:
-
-```
-
-```
+✅ Flag 7 Answer: systeminfo.exe/cmd.exe
 
 
----
-
-### 📑 Task: Provide the kill chain.
-
-### ✅ Flag 7 
 ---
 
 <a id="flag-8"></a>
-# 🚩 Flag 8 – 
+# 🚩 Flag 8 – Directory Enumeration
 
 **Objective:**
+HUNT LEAD: "What did they go after first? If they're mapping the environment, I need to know what they found."
+
+**Hint**
+1. Look for AD enumeration commands on the beachhead.
 
 **What to Hunt:**
-
+Find out what the attackers went after first once gaining access to the account.
 
 **KQL Query Used:**
 
 ```
+SilentCorridorX_CL
+| where isnotempty(EventTime)
+| where TimeGenerated > datetime(2026-04-07T14:00:00Z)
+| where todatetime(EventTime) between (
+    datetime(2026-02-15T00:00:00Z) ..
+    datetime(2026-02-27T23:59:59Z)
+)
+| where MdeTable == "DeviceProcessEvents"
+| where AccountName == "s.brandt"
+| project AccountName, ProcessCommandLine, EventTime, InitiatingProcessFileName
 
 ```
 
+<img width="877" height="209" alt="image" src="https://github.com/user-attachments/assets/df3a8cd7-d449-42d2-84bf-3a3d86460995" />
 
----
 
-### 📑 Task: Provide the timestamp of the leading event that's causing all these mess.
+✅ Flag 8 Answer: Domain Admins, Enterprise Admins
 
-### ✅ Flag 8 Answer: 
+The attackers used the command net group "Domain Admins" /dom and net group "Enterprise Admins" /dom to find out more information.
+
 
 ---
 
@@ -304,31 +322,44 @@ The command line identified was:
 ---
 
 <a id="flag-9"></a>
-# 🚩 Flag 9 -
+# 🚩 Flag 9 - Network Reconnaissance
 
 **Objective:**
-
+HUNT LEAD: "They know who the admins are. What infrastructure did they map next?"
 
 **What to Hunt:**
-
+Look for a command where they targeted another asset.
 
 **Hints:**
+1. Check DNS and network events originating from the beachhead.
 
 
-<img src="">
 
 **KQL Query Used:**
 
 ```
-
+SilentCorridorX_CL
+| where isnotempty(EventTime)
+| where TimeGenerated > datetime(2026-04-07T14:00:00Z)
+| where todatetime(EventTime) between (
+    datetime(2026-02-15T00:00:00Z) ..
+    datetime(2026-03-05T23:59:59Z)
+)
+| where MdeTable == "DeviceProcessEvents"
+| where AccountName == "s.brandt"
+| project AccountName, ProcessCommandLine, EventTime, InitiatingProcessFileName
 ```
 
 
+<img width="1564" height="47" alt="image" src="https://github.com/user-attachments/assets/b98901ca-fe55-4527-98c6-cd48368a1ee1" />
+<img width="1578" height="51" alt="image" src="https://github.com/user-attachments/assets/af5e0c33-dd61-4dd3-a317-6b87a57de692" />
+
+
+This shows that SRV-DC01 and SRV-FILES02 were being attempted access to in the command line.
+
+✅ Flag 9 Answer: SRV-DC01, SRV-FILES02
 
 ---
-
-
-
 
 
 
