@@ -13,7 +13,7 @@
 - [🚩 Flag 7 ](#flag-7)
 - [🚩 Flag 8 ](#flag-8)
 - [🚩 Flag 9 ](#flag-9)
-- [📊 Conclusion](#conclusion-investigation-timeline--key-findings)
+- [📊 Conclusion](#conclusion)
 - [🛡️ MITRE ATT&CK Mapping](#mitre-attck-mapping)
 - [🛠️ Remediation](#remediation)
 
