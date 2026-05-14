@@ -22,16 +22,15 @@
 
 <a id="scenario"></a>
 ## 🌍 Scenario
-
-
-
-<a id="mission"></a>
-## 🎯 Mission
 "The BfV advisory landed this morning. GREY VEIL has been hitting defence contractors across Europe. Extended dwell times. Previous victims didn't know they were compromised until the intelligence services told them."
 
 "Hofmann wants us to prove we're clean. Or prove we're not. Either way, I need evidence. Start with remote access. That's the entry point in every previous GREY VEIL case. If they're inside, find them. If they're not, prove it. Don't assume either way."
 
 
+<a id="mission"></a>
+## 🎯 Mission
+
+This is a proactive hunt. There are no alerts. No indicators of compromise have been provided. You are hunting based on the advisory alone. Determine whether GREY VEIL has accessed Haldric Aerospace infrastructure. If they have, scope the full extent of the compromise.
 
 **Known Information:**
 💻 GREY VEIL // Known Tradecraft
