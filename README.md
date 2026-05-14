@@ -64,7 +64,7 @@ Look for the main table name
 | where isnotempty(EventTime) | where TimeGenerated > datetime(2026-04-07T14:00:00Z) | summarize count() by MdeTable
 
 ```
-### ✅ Flag 1 Answer: SilentCorridorX_CL
+✅ Flag 1 Answer: SilentCorridorX_CL
 ---
 
 <a id="flag-2"></a>
