@@ -359,6 +359,15 @@ This shows that SRV-DC01 and SRV-FILES02 were being attempted access to in the c
 <a id ="Conclusion"></a>
 # Conclusion
 
+The investigation determined that the attacker gained unauthorized access to the Haldric Aerospace environment by compromising the account HALDRIC\s.brandt and authenticating through the organization’s FortiGate VPN infrastructure. Evidence showed multiple failed authentication attempts originating from the TOR exit node 185.220.101.34, followed shortly by successful logins using the same account, indicating the attacker likely possessed valid credentials before access was established.
+
+After successfully authenticating to the VPN, the attacker connected internally to the engineering workstation WS-ENG04, which served as the initial beachhead inside the environment. Rather than deploying malware or exploit frameworks, the attacker relied entirely on legitimate Windows utilities and administrative tooling to avoid detection and blend into normal activity.
+
+The first observed activity on the compromised host involved reconnaissance commands executed through cmd.exe, including systeminfo.exe, allowing the attacker to gather host and operating system information. The attacker then transitioned into Active Directory enumeration by querying privileged groups such as Domain Admins and Enterprise Admins, indicating an attempt to identify high-value accounts and escalation opportunities within the domain.
+
+Further command-line activity revealed reconnaissance against critical internal infrastructure, including SRV-DC01 and SRV-FILES02, suggesting the attacker was mapping the network and identifying systems likely containing sensitive organizational or engineering data. The use of multiple anonymized and residential IP addresses throughout the intrusion demonstrated operational security measures designed to obscure attribution and evade detection.
+
+No malware, persistence mechanisms, or destructive activity were identified during the investigation. However, the attacker’s behavior strongly aligned with stealth-focused espionage tradecraft associated with advanced threat actors targeting aerospace and defence organizations. The intrusion relied on valid account abuse, remote access infrastructure, native operating system tools, and low-noise discovery activity rather than traditional malicious payloads, which explains the absence of endpoint alerts or signature-based detections throughout the compromise lifecycle.
 
 
 
