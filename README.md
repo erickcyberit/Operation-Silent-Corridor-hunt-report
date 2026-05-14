@@ -93,8 +93,9 @@ SilentCorridorX_CL
 | where ActionType == "LogonSuccess"
 
 ```
-<img width="486" height="430" alt="image" src="https://github.com/user-attachments/assets/d50f6854-df40-4c77-b1f7-5f17d01614e0" />
 This log shows that a remote IP was used to login successfully with an elevated token from s.brandt.
+
+<img width="486" height="430" alt="image" src="https://github.com/user-attachments/assets/d50f6854-df40-4c77-b1f7-5f17d01614e0" />
 
 
 
