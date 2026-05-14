@@ -64,7 +64,7 @@ Look for the main table name
 | where isnotempty(EventTime) | where TimeGenerated > datetime(2026-04-07T14:00:00Z) | summarize count() by MdeTable
 
 ```
-
+### ✅ Flag 1 Answer: SilentCorridorX_CL
 ---
 
 <a id="flag-2"></a>
@@ -97,7 +97,7 @@ This log shows that a remote IP was used to login successfully with an elevated 
 
 <img width="486" height="430" alt="image" src="https://github.com/user-attachments/assets/d50f6854-df40-4c77-b1f7-5f17d01614e0" />
 
-
+### ✅ Flag 2 Answer: s.brandt 
 
 ---
 
@@ -105,30 +105,34 @@ This log shows that a remote IP was used to login successfully with an elevated 
 # 🚩 Flag 3: 
 
 **Objective:**
-
+HUNT LEAD: "Could be a busy employee. Could be someone else using their credentials. Prove it one way or the other."
 
 **What to Hunt:**
+Find account logins and see if any Remote IP looks suspicious
 
-
-**Hint:**
-1. 
-<img src="">
+**Hints:**
+1. Check for failed authentication attempts before the first successful session.
 
 **KQL Query Used:**
 
-```
 
-```
+SilentCorridorX_CL
+| where isnotempty(EventTime)
+| where TimeGenerated > datetime(2026-04-07T14:00:00Z)
+| where MdeTable == "FortiGateVPN"
+| project EventTime, AccountName, RemoteIP, TunnelIP, ActionType, DestinationHost
+| sort by EventTime asc
 
+<img width="1079" height="25" alt="image" src="https://github.com/user-attachments/assets/31c0fbd9-a6f3-4ea4-bb37-816ae3bdc155" />
+
+### ✅ Flag 3 Answer: s.brandt 185.220.101.34
 
 
 ---
 
-### 📑 Task: Provide the value of the command utilized to start up the program.
 
-### ✅ Flag 3 Answer:
 
----
+
 
 <a id="flag-4"></a>
 # 🚩 Flag 
