@@ -161,7 +161,7 @@
 ## Further Analysis
 
 
-<img src="https://i.imgur.com/P98xac1.png">
+<img src="">
 
 
 ---
@@ -294,7 +294,7 @@ At Acme Corp, the Phantom Hackers targeted Bubba Rockerfeatherman III’s privil
 
 
 
-[![Timeline](https://i.imgur.com/lA4t98q.png)](https://serg-luka.github.io/Threat-Hunting-CTF/timeline.html)
+[![Timeline]()
 ## Key Findings
 
 | Flag | Objective | Key Findings | Flag Answer |
