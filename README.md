@@ -18,7 +18,7 @@
 
 ---
 
-## 👉 [Explore the interactive timeline of key CTF findings here.](https://serg-luka.github.io/Threat-Hunting-CTF/timeline.html)
+## 👉 [Explore the interactive timeline of key CTF findings here.]()
 
 <a id="scenario"></a>
 ## 🌍 Scenario
