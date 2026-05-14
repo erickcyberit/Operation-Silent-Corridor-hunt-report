@@ -127,43 +127,46 @@ SilentCorridorX_CL
 
 
 ```
-✅ Flag 3 Answer: s.brandt 185.220.101.34
+✅ Flag 3 Answer: 185.220.101.34
+
+The IP address 185.220.101.34 is using an elevated token and belongs to the tor network IP address.
 
 ---
 
 <a id="flag-4"></a>
-# 🚩 Flag 
+# 🚩 Flag 4
 
 **Objective:**
+
+HUNT LEAD: "That IP failed then succeeded. Scope the full picture for this account across the window."
 
 **What to Hunt:**
 
 **Hints:**
-1. 
+1. Count unique source addresses for this account across the investigation window.
 
-<img src="">
 
 **KQL Query Used:**
 
 ```
+SilentCorridorX_CL
+| where isnotempty(EventTime)
+| where TimeGenerated > datetime(2026-04-07T14:00:00Z)
+| where MdeTable == "FortiGateVPN"
+| where AccountName == "s.brandt"
+| distinct EventTime, AccountName, RemoteIP, TunnelIP, ActionType, DestinationHost
+| order by EventTime asc
+
 
 ```
+<img width="1143" height="25" alt="image" src="https://github.com/user-attachments/assets/c1f4655e-5d1f-4320-ac06-abf92bbc5a0e" />
+<img width="1085" height="23" alt="image" src="https://github.com/user-attachments/assets/d9cb1e29-6483-43e3-9225-ede0ddbaded6" />
+<img width="1044" height="29" alt="image" src="https://github.com/user-attachments/assets/9d817c8c-f2ac-45f8-b88c-d1e3b7322335" />
+<img width="1135" height="21" alt="image" src="https://github.com/user-attachments/assets/ab446639-5f84-43c5-bb3c-48a6477ef975" />
 
 
-
-
-
-## Further Analysis
-
-
-<img src="">
-
-
----
-
-### 📑 Task: 
-### ✅ Flag 4 
-
+✅ Flag 4 Answer: 4
+There are 4 different IP addresses associated with this account.
 ---
 
 <a id="flag-5"></a>
