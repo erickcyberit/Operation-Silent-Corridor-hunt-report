@@ -134,7 +134,7 @@ The IP address 185.220.101.34 is using an elevated token and belongs to the tor 
 ---
 
 <a id="flag-4"></a>
-# 🚩 Flag 4
+# 🚩 Flag 4 Connection Footprint
 
 **Objective:**
 
@@ -170,33 +170,38 @@ There are 4 different IP addresses associated with this account.
 ---
 
 <a id="flag-5"></a>
-# 🚩 Flag 5 – Registry Persistence Entry
+# 🚩 Flag 5 – Source Address Inventory
 
 **Objective:**
+HUNT LEAD: "Need them for threat intel. Pull every distinct source for this account."
 
 **What to Hunt:**
+Check every IP address on the account and sort them
 
 **Hint:**
-1. 
+1. Pull all unique source IPs for this account and sort them.
 
-<img src="">
 
 **KQL Query Used:**
 
 ```
+SilentCorridorX_CL
+| where isnotempty(EventTime)
+| where TimeGenerated > datetime(2026-04-07T14:00:00Z)
+| where MdeTable == "FortiGateVPN"
+| where AccountName == "s.brandt"
+| distinct EventTime, AccountName, RemoteIP, TunnelIP, ActionType, DestinationHost
+| order by EventTime asc
 
 ```
 
+### ✅ Flag 5 Answer: 45.153.160.88,88.153.72.14,91.234.33.126,185.220.101.34 	
+These are the 4 IP addresses in s.brandt 
 
-
----
-
-### 📑 Task: Identify the full Registry Path value.
-
-### ✅ Flag 5 Answer: 
 ---
 
 <a id="flag-6"></a>
+
 # 🚩 Flag 6 -
 
 **Objective:**
