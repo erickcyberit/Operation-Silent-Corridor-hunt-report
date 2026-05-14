@@ -89,7 +89,7 @@
 **Hints:**
 1. 
 
-<img src="https://i.imgur.com/4ZLnH7N.png">
+<img src="">
 
 **KQL Query Used:**
 
